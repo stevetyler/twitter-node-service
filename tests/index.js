@@ -23,12 +23,19 @@ describe('API', () => {
     assert.equal(res.status, 200);
   });
 
-
   it('Fetches user tweets', async () => {
     const res = await request(`http://localhost:${port}/stevetyler_uk`);
     assert.equal(res.status, 200);
-    //assert body is array
-    //shouldExist('array')
     expect(res.body).to.be.an('array');
+  });
+
+  it('Displays each tweet with 3 fields: body, createdDate and author', async () => {
+    const res = await request(`http://localhost:${port}/stevetyler_uk`);
+
+    assert.equal(res.status, 200);
+    assert.equal(Object.keys(res.body[0]).length, 3, '3 fields shown for tweet');
+    assert.equal(res.body[0].hasOwnProperty('body'), true, 'body field exists');
+    assert.equal(res.body[0].hasOwnProperty('createdDate'), true, 'createdDate field exists');
+    assert.equal(res.body[0].hasOwnProperty('author'), true, 'author field exists');
   });
 });
