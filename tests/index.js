@@ -38,4 +38,10 @@ describe('API', () => {
     assert.equal(res.body[0].hasOwnProperty('createdDate'), true, 'createdDate field exists');
     assert.equal(res.body[0].hasOwnProperty('author'), true, 'author field exists');
   });
+
+
+  it('Posts new tweet to stevetyler_uk account', async () => {
+    await request(`http://localhost:${port}/post`);
+    assert.equal(res.status, 200);
+  });
 });

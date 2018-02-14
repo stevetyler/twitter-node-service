@@ -22,6 +22,13 @@ exports.formatTweets = (data) => {
   return data.map(tweet => formatTweet(tweet));
 }
 
+exports.postTweet = async () => {
+  const params = {
+    'status': 'test tweet'
+  }
+  await client.post('statuses/update', params);
+}
+
 function formatTweet(tweet) {
   return {
     body: tweet.text,
