@@ -10,9 +10,9 @@ router.get('/', function(req, res, next) {
 
 router.get('/:id', async function(req, res, next) {
 
-  twitter.fetchUserTweets(req.params.id);
-
-  res.send('hello');
+  return twitter.fetchUserTweets(req.params.id).then(data => {
+    res.send(twitter.formatTweets(data));
+  });
 });
 
 
