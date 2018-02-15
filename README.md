@@ -12,7 +12,7 @@ You will need the following things properly installed on your computer.
 
 ## Twitter authentication
 
-Service requires an auth.js file in the root folder with Twitter credentials.
+Service requires an auth.js file in the root folder with Twitter credentials. To be supplied separately.
 
 ## Installation
 
