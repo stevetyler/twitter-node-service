@@ -19,6 +19,6 @@
   },
   "scripts": {
     "start": "nodemon ./bin/www",
-    "test": "mocha tests/index.js"
+    "test": "mocha tests/"
   }
 }
