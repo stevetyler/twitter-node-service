@@ -1,6 +1,6 @@
 # Twitter-Node-Service
 
-Lists tweets for user stevetyler_uk and will post a test tweet from /post route. Please note that Twitter doesn't allow duplicates to be posted so the tweet will only show once.
+Lists tweets for user stevetyler_uk and will post a test tweet from /post route. Please note that Twitter doesn't allow duplicates to be posted within a set time period, so the tweet will only show once at first.
 
 ## Prerequisites
 
