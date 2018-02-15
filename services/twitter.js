@@ -14,7 +14,7 @@ exports.fetchUserTweets = async (user_id) => {
     user_id: user_id,
   };
   let tweets = await client.get('statuses/user_timeline', params);
-  //console.log(tweets.data);
+
   return tweets.data;
 }
 

@@ -2,26 +2,27 @@ const express = require('express');
 const router = express.Router();
 const twitter = require('../services/twitter');
 
-
-/* GET home page. */
+/* GET user tweets for user id stevetyler_uk */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
-});
-
-
-router.get('/post', async function(req, res, next) {
-  console.log('post called');
-  return twitter.postTweet().then(() => {
-    res.send('Tweet posted');
+  return twitter.fetchUserTweets().then(data => {
+    if (Array.isArray(data)) {
+      data.length ? res.send(twitter.formatTweets(data)) : res.send('no tweets found');
+    }
+    else {
+      throw new Error();
+    }
   }).catch(err => {
-    res.send(err);
+    console.log(err);
+    res.send('error fetching tweets');
   });
 });
 
-router.get('/:id', async function(req, res, next) {
-
-  return twitter.fetchUserTweets(req.params.id).then(data => {
-    res.send(twitter.formatTweets(data));
+router.get('/post', function(req, res, next) {
+  return twitter.postTweet().then(() => {
+    res.send({});
+  }).catch(err => {
+    console.log(err);
+    res.send('error posting tweet');
   });
 });
 
